@@ -1,26 +1,178 @@
-let currentIndex = 0;
-const products = document.querySelectorAll('.product-cart');
-const totalProducts = products.length;
-
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const productCarousel = document.getElementById('productCarousel');
-
-function updateCarousel() {
-    const offset = -currentIndex * (products[0].offsetWidth + 10); // Add gap size
-    productCarousel.style.transform = `translateX(${offset}px)`;
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-    }
-});
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+}
 
-nextBtn.addEventListener('click', () => {
-    if (currentIndex < totalProducts - 1) {
-        currentIndex++;
-        updateCarousel();
-    }
-});
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    border-bottom: 2px solid #FFD700; /* Yellow border */
+}
+
+header .site-name h1 {
+    color: #333;
+    font-size: 30px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+header .site-name h1 .wix {
+    color: #FFD700; /* Yellow */
+}
+
+header .site-name h1 .mart {
+    color: white;
+    position: relative;
+    padding: 0 8px;
+    margin-left: 5px;
+    text-decoration: none;
+    background-color: #FFD700;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.6); /* Yellow Shadow */
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Featured Products Section */
+.product-section .product-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.product-section .pro-collection {
+    display: flex;
+    overflow: hidden;
+    gap: 10px;
+    padding: 20px 0;
+    justify-content: flex-start;
+    transition: transform 0.5s ease; /* Add smooth transition */
+}
+
+.product-section .product-cart {
+    width: 280px;
+    border: 1px solid #ebebeb;
+    padding: 13px;
+    border-radius: 25px;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s;
+    flex-shrink: 0;
+}
+
+.product-section .product-cart:hover {
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.product-section .product-cart img {
+    width: 100%;
+    border-radius: 25px;
+}
+
+.product-section .product-cart span {
+    color: #969696;
+    font-weight: 500;
+}
+
+.product-section .product-cart h4 {
+    font-size: 18px;
+    color: rgb(41, 41, 41);
+}
+
+.product-section .product-cart .stars {
+    color: #e6ae2c;
+    padding: 6px 0;
+}
+
+.product-section .product-cart .price {
+    color: #088178;
+    padding: 4px 0;
+}
+
+.product-section .product-cart .buy-icon {
+    color: #088178;
+    background-color: #c7e9e75e;
+    padding: 15px;
+    border-radius: 50px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+/* Slider buttons */
+.slider-button {
+    background-color: #FFD700; /* Yellow */
+    color: white;
+    font-size: 30px;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.6); /* Yellow Shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-button:hover {
+    background-color: #ffbf00; /* Slightly darker yellow */
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.8);
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+/* Footer Styling */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .footer-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+footer .footer-button {
+    color: #333;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+/* Shopping cart button */
+footer .shopping-btn {
+    color: #FFF;
+    background-color: #FFD700; /* Yellow */
+    padding: 8px;
+    border-radius: 50%;
+}
